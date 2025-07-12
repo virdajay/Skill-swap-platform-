@@ -15,6 +15,7 @@ login.html= the login page of my project.
 user.html= the file of other id.
 request.html= the file of giving request.
 status.html= the file which saw us requests.
+you.html = the file that saw user to change his id/profile.
 
 my video link:- 
 

@@ -6,6 +6,8 @@ mt team name is virda jay
 
 my email is virdajay10@gmail.com
 
+this is the app where people connect with other people and develop and take or give knowledge of skills.this app is where skill meet skill.
+
 the structure of my project:-
 
 index.html= the home page of my project.

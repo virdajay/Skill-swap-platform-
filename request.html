@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Send Skill Swap Request</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    select, textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      height: 100px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      margin-top: 30px;
+      width: 100%;
+      background-color: #28a745;
+      color: white;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Send Request to <span id="username">User</span></h2>
+
+    <label for="yourSkill">Choose one of your offered skills:</label>
+    <select id="yourSkill">
+      <option value="">Select your skill</option>
+      <option value="Cooking">Cooking</option>
+      <option value="Programming">Programming</option>
+      <option value="Designing">Designing</option>
+    </select>
+
+    <label for="theirSkill">Choose one of their wanted skills:</label>
+    <select id="theirSkill">
+      <option value="Cooking">cooking</option>
+    <option value="Designing">designing</option>
+    <option value="Programming">programming</option>
+    </select>
+
+    <label for="message">Message:</label>
+    <textarea id="message" placeholder="Write your message here..."></textarea>
+
+    <button class="submit-btn" onclick="submitRequest()">Submit Request</button>
+  </div>
+
+  <script>
+    // Extract query parameters
+    const params = new URLSearchParams(window.location.search);
+    const username = params.get('user') || 'User';
+    const theirWantedSkill = params.get('wants');
+
+    // Set username
+    document.getElementById('username').textContent = username;
+
+    // Populate 'their skill' dropdown
+    const theirSkillSelect = document.getElementById('theirSkill');
+// Automatically select the correct skill from the URL
+if (theirWantedSkill) {
+    for (let option of theirSkillSelect.options) {
+      if (option.value.toLowerCase() === theirWantedSkill.toLowerCase()) {
+        option.selected = true;
+        break;
+      }
+    }
+  }
+    
+
+    // Submit handler
+    function submitRequest() {
+      const yourSkill = document.getElementById('yourSkill').value;
+      const theirSkill = document.getElementById('theirSkill').value;
+      const message = document.getElementById('message').value;
+
+      if (!yourSkill || !theirSkill || !message.trim()) {
+        alert("Please fill in all fields before submitting.");
+        return;
+      }
+
+      // Simulate submission
+      alert(`Request sent to ${username}!\n\nYour Skill: ${yourSkill}\nTheir Skill: ${theirSkill}\nMessage: ${message}`);
+
+      // Optionally: redirect or reset
+      // window.location.href = "success.html";
+    }
+  </script>
+
+</body>
+</html>

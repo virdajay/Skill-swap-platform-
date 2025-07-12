@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Skill Swap Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background-color: #007bff;
+      color: white;
+    }
+
+    .navbar .brand {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .navbar .login-btn {
+      background: white;
+      color: #007bff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* Filter/Search */
+    .filter-section {
+      display: flex;
+      flex-wrap:wrap;
+      justify-content: space-between;
+      padding: 20px;
+      background: #fff;
+      gap: 10px;
+    }
+
+    .filter-section select,
+    .filter-section input {
+      padding: 10px;
+      font-size: 16px;
+      flex: 1;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    /* User Card */
+    .user-list {
+      padding: 20px;
+    }
+
+    .user-card {
+      display: flex;
+      justify-content: space-between;
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .user-info {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .user-info img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+
+    .user-text h3 {
+      margin: 0;
+      color: #333;
+    }
+
+    .skills {
+      margin: 8px 0;
+      color: #555;
+    }
+
+    .actions {
+      text-align: right;
+    }
+
+    .request-btn {
+      background-color: #28a745;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .rating {
+      margin-top: 10px;
+      color: #ffcc00;
+      font-size: 16px;
+    }
+
+    /* Pagination */
+    .pagination {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .pagination button {
+      margin: 0 5px;
+      padding: 8px 12px;
+      border: 1px solid #007bff;
+      background: white;
+      color: #007bff;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    a{
+      text-decoration: none;
+      color:black;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="brand">Skill Swap Platform</div>
+    <button class="login-btn" onclick="window.location.href='login.html'">Login</button>
+
+  </div>
+
+  <!-- Filter and Search -->
+  <div class="filter-section">
+    <select id="abilitySelect">
+      <option value="">Select Ability</option>
+      <option value="Cooking">Cooking</option>
+      <option value="Programming">Programming</option>
+      <option value="Design">Design</option>
+    </select>
+    <input type="text" id="searchInput" placeholder="Search ability...">
+  </div>
+
+  <!-- User Cards -->
+  <div class="user-list" id="userList">
+    <!-- User 1 -->
+    <div class="user-card">
+      <div class="user-info">
+      <img src="https://via.placeholder.com/80" alt="User Photo">
+        <div class="user-text">
+          <h3><a href="user1.html">Jane Doe</a></h3>
+          <div class="skills"><strong>Offers:</strong> Cooking</div>
+          <div class="skills"><strong>Wants:</strong> Programming</div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="request-btn" onclick="location.href='request.html?user=Jane%20Doe&wants=programming'">Request</button>
+        <div class="rating">⭐⭐⭐⭐☆</div>
+      </div>
+    </div>
+
+    <!-- User 2 -->
+    <div class="user-card">
+      <div class="user-info">
+        <img src="https://via.placeholder.com/80" alt="User Photo">
+        <div class="user-text">
+         <h3><a href="user2.html">John Smith</a></h3>
+          <div class="skills"><strong>Offers:</strong> Design</div>
+          <div class="skills"><strong>Wants:</strong> Cooking</div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="request-btn" onclick="location.href='request.html?user=John%20Smith&wants=Cooking'">Request</button>
+        <div class="rating">⭐⭐⭐⭐⭐</div>
+      </div>
+    </div>
+
+    <!-- User 3 -->
+     <div class="user-card">
+      <div class="user-info">
+        <img src="https://via.placeholder.com/80" alt="User Photo">
+        <div class="user-text">
+          <h3><a href="user3.html">Emily Rose</a></h3>
+          <div class="skills"><strong>Offers:</strong> Programming</div>
+          <div class="skills"><strong>Wants:</strong> Design</div>
+        </div>
+      </div>
+      <div class="actions"></a>
+        <button class="request-btn" onclick="location.href='request.html?user=Emily%20Rose&wants=Designing'">Request</button>
+        <div class="rating">⭐⭐⭐☆☆</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <button>&laquo;</button>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>&raquo;</button>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const abilitySelect = document.getElementById('abilitySelect');
+    const userList = document.getElementById('userList');
+    const userCards = Array.from(userList.children);
+
+    function filterUsers() {
+      const search = searchInput.value.toLowerCase();
+      const ability = abilitySelect.value.toLowerCase();
+
+      userCards.forEach(card => {
+        const offers = card.querySelector('.skills').textContent.toLowerCase();
+        const visible = (!ability || offers.includes(ability)) &&
+                        (!search || offers.includes(search));
+        card.style.display = visible ? 'flex' : 'none';
+      });
+    }
+
+    searchInput.addEventListener('input', filterUsers);
+    abilitySelect.addEventListener('change', filterUsers);
+    
+  </script>
+
+</body>
+</html>
+
+"

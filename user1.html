@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #007bff;
+      color: white;
+      padding: 15px 20px;
+    }
+
+    .navbar .brand {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .navbar .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .navbar img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid white;
+    }
+
+    /* Profile Layout */
+    .profile-container {
+      background: white;
+      margin: 30px auto;
+      padding: 20px;
+      max-width: 800px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .profile-main {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .profile-left {
+      flex: 1 1 60%;
+    }
+
+    .profile-left .request-btn {
+      background-color: #28a745;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    .profile-left .user-name {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .profile-left .skills {
+      font-size: 18px;
+      margin-bottom: 6px;
+      color: #555;
+    }
+
+    .profile-right {
+      flex: 1 1 30%;
+      text-align: center;
+    }
+
+    .profile-right img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid #007bff;
+      object-fit: cover;
+    }
+
+    /* Rating & Feedback */
+    .rating-feedback {
+      margin-top: 30px;
+      font-size: 18px;
+      color: #555;
+    }
+
+    .rating {
+      font-size: 24px;
+      color: #ffcc00;
+      margin-bottom: 10px;
+    }
+
+    .feedback {
+      background-color: #f0f0f0;
+      padding: 15px;
+      border-radius: 6px;
+      font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      .profile-main {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .profile-left, .profile-right {
+        flex: 1 1 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="brand">Skill Swap Platform</div>
+    <div class="nav-links">
+      <a href="#">Swap Request</a>
+      <a href="index.html">Home</a>
+      <img src="https://via.placeholder.com/40" alt="User Avatar">
+    </div>
+  </div>
+
+  <!-- Profile Container -->
+  <div class="profile-container">
+    <div class="profile-main">
+      <!-- Left Side -->
+      <div class="profile-left">
+        <button class="request-btn" onclick="location.href='request.html?user=Jane%20Doe&wants=Programming'">Request</button>
+        <div class="user-name" id="userName">Jane Doe</div>
+        <div class="skills" id="offerSkill"><strong>Offers:</strong> Cooking</div>
+        <div class="skills" id="wantSkill"><strong>Wants:</strong> Programming</div>
+      </div>
+
+      <!-- Right Side -->
+      <div class="profile-right">
+        <img src="https://via.placeholder.com/150" alt="Profile Photo" id="profilePhoto">
+      </div>
+    </div>
+
+    <!-- Rating and Feedback -->
+    <div class="rating-feedback">
+      <div class="rating" id="rating">⭐⭐⭐⭐☆</div>
+      <div class="feedback" id="feedback">"Jane is very reliable and skilled. Great experience!"</div>
+    </div>
+  </div>
+
+  <!-- JavaScript to dynamically load (optional) -->
+  <script>
+    // Example: Dynamically load data (could be from URL or backend in real use)
+    const userData = {
+      name: "Jane Doe",
+      offer: "Cooking",
+      want: "Programming",
+      photo: "https://via.placeholder.com/150",
+      rating: "⭐⭐⭐⭐☆",
+      feedback: "Jane is very reliable and skilled. Great experience!"
+    };
+
+    // Populate UI
+    document.getElementById("userName").textContent = userData.name;
+    document.getElementById("offerSkill").innerHTML = `<strong>Offers:</strong> ${userData.offer}`;
+    document.getElementById("wantSkill").innerHTML = `<strong>Wants:</strong> ${userData.want}`;
+    document.getElementById("profilePhoto").src = userData.photo;
+    document.getElementById("rating").textContent = userData.rating;
+    document.getElementById("feedback").textContent = userData.feedback;
+  </script>
+
+</body>
+</html>

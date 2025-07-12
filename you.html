@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile Editor</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #343a40;
+      color: white;
+      padding: 10px 20px;
+    }
+
+    .navbar-left {
+      display: flex;
+      gap: 10px;
+    }
+
+    .navbar-left button {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+
+    .navbar-center {
+      display: flex;
+      gap: 15px;
+    }
+
+    .navbar-center a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Profile Image Section */
+    .profile-photo-section {
+      text-align: center;
+      margin: 30px 0 10px;
+    }
+
+    #profileImage {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      cursor: pointer;
+      border: 3px solid #ccc;
+    }
+
+    #imageUpload {
+      display: none;
+    }
+
+    /* Form Container */
+    .form-container {
+      max-width: 700px;
+      margin: 0 auto 40px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    .row {
+      display: flex;
+      gap: 20px;
+    }
+
+    .row .form-group {
+      flex: 1;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 20px;
+      margin-top: 8px;
+    }
+
+    .radio-group label {
+      font-weight: normal;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="navbar-left">
+      <button onclick="saveChanges()">💾 Save</button>
+      <button onclick="discardChanges()">❌ Discard</button>
+    </div>
+    <div class="navbar-center">
+      <a href="status.html">Check Requests</a>
+      <a href="index.html">Home</a>
+    </div>
+  </div>
+
+  <!-- Profile Photo Section -->
+  <div class="profile-photo-section">
+    <label for="imageUpload">
+      <img src="https://via.placeholder.com/100" alt="Choose your photo" id="profileImage">
+    </label>
+    <input type="file" id="imageUpload" accept="image/*">
+  </div>
+
+  <div class="form-container">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name">
+    </div>
+
+    <div class="form-group">
+      <label for="location">Location</label>
+      <input type="text" id="location">
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+        <label for="skill-offered">Skill Offered</label>
+        <input type="text" id="skill-offered">
+      </div>
+      <div class="form-group">
+        <label for="skill-wanted">Skill Wanted</label>
+        <input type="text" id="skill-wanted">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="availability">Availability</label>
+      <input type="text" id="availability">
+    </div>
+
+    <div class="form-group">
+      <label>Profile Type</label>
+      <div class="radio-group">
+        <label><input type="radio" name="profile-type" value="public"> Public</label>
+        <label><input type="radio" name="profile-type" value="private"> Private</label>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- JavaScript -->
+  <script>
+    // Save Changes Placeholder
+    function saveChanges() {
+      alert("Changes saved!");
+    }
+
+    // Discard Changes Placeholder
+    function discardChanges() {
+      if (confirm("Are you sure you want to discard all changes?")) {
+        document.querySelectorAll("input[type='text'], select").forEach(field => {
+          field.value = "";
+        });
+        document.querySelectorAll("input[type='radio']").forEach(radio => {
+          radio.checked = false;
+        });
+      }
+    }
+
+    // Change Profile Photo
+    const imageUpload = document.getElementById("imageUpload");
+    const profileImage = document.getElementById("profileImage");
+
+    imageUpload.addEventListener("change", function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          profileImage.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+
+</body>
+</html>

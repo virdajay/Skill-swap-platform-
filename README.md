@@ -10,7 +10,8 @@ the structure of my project:-
 
 index.html= the home page of my project.
 login.html= the login page of my project.
-
+user.html= the file of other id
+request.html= the file of giving request 
 
 my video link:- 
 
